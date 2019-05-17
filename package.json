@@ -2,19 +2,26 @@
   "name": "gua-theme",
   "version": "1.0.0",
   "description": "Tema para uso nos sistemas do grupo Guararapes",
+  "main": "gua-theme.umd.js",
+  "jsnext:main": "gua-theme.esm.js",
+  "module": "gua-theme.esm.js",
+  "types": "gua-theme.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "copy": "node tools/copy-package.js && node tools/cleanup.js",
+    "bundle": "rimraf dist && rollup -c rollup.config.umd.js && rollup -c rollup.config.esm.js && tsc && ngc",
+    "postbundle": "node tools/removecode.js",
+    "build": "npm run bundle && npm run copy"
   },
   "repository": {
     "type": "git",
     "url": "http://r-gitlab.riachuelo.net/guararapes/gua-theme"
   },
-  "authors":[
+  "authors": [
     "Erisson Costa"
   ],
   "private": true,
@@ -35,12 +42,13 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
     "@angular/cli": "~7.3.9",
-    "@angular/compiler-cli": "~7.2.0",
+    "@angular/compiler-cli": "^7.2.15",
     "@angular/language-service": "~7.2.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
+    "del": "^4.1.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.0.0",
@@ -48,7 +56,12 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "node-sass": "^4.12.0",
     "protractor": "~5.4.0",
+    "rollup-plugin-angular": "^0.5.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0",
+    "rollup-plugin-typescript": "^1.0.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
