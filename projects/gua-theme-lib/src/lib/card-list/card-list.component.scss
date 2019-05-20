@@ -1,17 +1,13 @@
-nav {
-  color: #FFF;
+#card-list {
   width: 100%;
-}
-.navbar {
-  background-color: #363636;
-  height: 66px;
-  align-items: center;
-}
-.navbar-container {
-  position: relative;
-  height: 100%;
+  padding: 10px;
+  background-color: #F1F1F1;
+  border-radius: 4px;
 
-  div.flex {
-    height: 100%;
+  .lista {
+    margin-left: 20px;
+    background-color: pink;
+    width: 100px;
+    height: 150px;
   }
 }
