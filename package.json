@@ -1,10 +1,10 @@
 {
-  "name": "gua-plm-frontend",
+  "name": "gua-theme",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng build gua-theme && ng serve",
-    "build": "ng build -prod --output-path ui-src/META-INF/resources",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
