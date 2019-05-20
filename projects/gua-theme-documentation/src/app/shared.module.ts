@@ -5,7 +5,7 @@ import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
-import { GuaThemeModule } from 'projects/gua-theme/src/public-api';
+import { GuaThemeModule } from 'gua-theme';
 
 const fakeActivatedRoute = {
     snapshot: { data: {} }
