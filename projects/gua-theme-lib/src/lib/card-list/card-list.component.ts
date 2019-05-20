@@ -8,7 +8,7 @@ import { Component, ElementRef, OnInit, ViewChild, Input } from '@angular/core';
 export class CardListComponent implements OnInit {
 
   @Input() title: string;
-  @Input() list: string[] = ["<h3>Erisson</h3>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h3>Erisson</h3>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>","<h1>Erisson</h1>",];
+  @Input() list: HTMLElement[];
   @Input() backgroundColor: string;
   @Input() width: string;
   @Input() height: string;

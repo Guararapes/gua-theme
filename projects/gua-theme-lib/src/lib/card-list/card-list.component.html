@@ -1,4 +1,4 @@
-<div id="card-list" fxFlex fxLayout="column" [style.background-color]="backgroundColor">
+<div *ngIf="list && list.lengh" id="card-list" fxFlex fxLayout="column" [style.background-color]="backgroundColor">
   <div *ngIf="title">
      {{title}}
   </div>
