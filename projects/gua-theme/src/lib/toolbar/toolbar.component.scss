@@ -1,0 +1,46 @@
+.navbar-tool {
+  padding-left: 12px;
+  padding-right: 12px;
+  line-height: 66px;
+  transform: translateY(-2px);
+  text-align: center;
+
+  .navbar-title {
+    font-family: 'Avenir LT Std 85 Heavy';
+    text-transform: uppercase;
+    font-size: 34px;
+    margin: 0;
+    transform: translateY(2px);
+  }
+}
+.navbar-menu {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  width: 66px;
+  padding: 0;
+}
+.navbar-icon {
+  mat-icon {
+    vertical-align: middle;
+  }
+}
+.navbar-icon-selected {
+  background-color: #232323;
+}
+.navbar-icon-avatar {
+  padding-left: 12px;
+}
+.navbar-avatar {
+  height: 38px;
+  width: 38px;
+  line-height: 38px;
+  background-color: #2795DF;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+::ng-deep .mat-form-field-appearance-standard .mat-form-field-flex {
+  padding-top: 0px !important;
+}

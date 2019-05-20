@@ -1,0 +1,19 @@
+.breadcrumb li {
+  display: inline;
+}
+.breadcrumb li+li:before {
+  content: '\E5CC';
+  font-family: 'Material Icons';
+  color: rgba(25, 25, 25, 0.32);
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.breadcrumb{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  a{
+    color: rgba(25, 25, 25, 0.32);
+    text-decoration:none;
+  }
+}
