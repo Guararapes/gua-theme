@@ -3,33 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gua-theme": {
-      "root": "projects/gua-theme",
-      "sourceRoot": "projects/gua-theme/src",
+    "gua-theme-lib": {
+      "root": "projects/gua-theme-lib",
+      "sourceRoot": "projects/gua-theme-lib/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "theme",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/gua-theme/tsconfig.lib.json",
-            "project": "projects/gua-theme/ng-package.json"
+            "tsConfig": "projects/gua-theme-lib/tsconfig.lib.json",
+            "project": "projects/gua-theme-lib/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/gua-theme/src/test.ts",
-            "tsConfig": "projects/gua-theme/tsconfig.spec.json",
-            "karmaConfig": "projects/gua-theme/karma.conf.js"
+            "main": "projects/gua-theme-lib/src/test.ts",
+            "tsConfig": "projects/gua-theme-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/gua-theme-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/gua-theme/tsconfig.lib.json",
-              "projects/gua-theme/tsconfig.spec.json"
+              "projects/gua-theme-lib/tsconfig.lib.json",
+              "projects/gua-theme-lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -58,7 +58,7 @@
               "projects/gua-theme-documentation/src/assets"
             ],
             "styles": [
-              "projects/gua-theme-documentation/src/styles.scss"
+              "projects/gua-theme-documentation/src/styles.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -167,5 +167,5 @@
       }
     }
   },
-  "defaultProject": "gua-theme"
+  "defaultProject": "gua-theme-lib"
 }
