@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs/operators'), require('@angular/platform-browser/animations'), require('@angular/common'), require('@angular/router'), require('@angular/cdk/drag-drop'), require('@angular/cdk/scrolling'), require('@angular/cdk/table'), require('@angular/cdk/tree'), require('@angular/material'), require('ng-material-multilevel-menu'), require('@angular/forms'), require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('gua-theme-lib', ['exports', 'rxjs/operators', '@angular/platform-browser/animations', '@angular/common', '@angular/router', '@angular/cdk/drag-drop', '@angular/cdk/scrolling', '@angular/cdk/table', '@angular/cdk/tree', '@angular/material', 'ng-material-multilevel-menu', '@angular/forms', '@angular/core'], factory) :
-    (factory((global['gua-theme-lib'] = {}),global.rxjs.operators,global.ng.platformBrowser.animations,global.ng.common,global.ng.router,global.ng.cdk['drag-drop'],global.ng.cdk.scrolling,global.ng.cdk.table,global.ng.cdk.tree,global.ng.material,global.ngMaterialMultilevelMenu,global.ng.forms,global.ng.core));
-}(this, (function (exports,operators,animations,common,router,dragDrop,scrolling,table,tree,material,ngMaterialMultilevelMenu,forms,i0) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs/operators'), require('@angular/platform-browser/animations'), require('@angular/common'), require('@angular/router'), require('@angular/cdk/drag-drop'), require('@angular/cdk/scrolling'), require('@angular/cdk/table'), require('@angular/cdk/tree'), require('@angular/flex-layout'), require('@angular/material'), require('ng-material-multilevel-menu'), require('@angular/forms'), require('@angular/core')) :
+    typeof define === 'function' && define.amd ? define('gua-theme-lib', ['exports', 'rxjs/operators', '@angular/platform-browser/animations', '@angular/common', '@angular/router', '@angular/cdk/drag-drop', '@angular/cdk/scrolling', '@angular/cdk/table', '@angular/cdk/tree', '@angular/flex-layout', '@angular/material', 'ng-material-multilevel-menu', '@angular/forms', '@angular/core'], factory) :
+    (factory((global['gua-theme-lib'] = {}),global.rxjs.operators,global.ng.platformBrowser.animations,global.ng.common,global.ng.router,global.ng.cdk['drag-drop'],global.ng.cdk.scrolling,global.ng.cdk.table,global.ng.cdk.tree,global.ng['flex-layout'],global.ng.material,global.ngMaterialMultilevelMenu,global.ng.forms,global.ng.core));
+}(this, (function (exports,operators,animations,common,router,dragDrop,scrolling,table,tree,flexLayout,material,ngMaterialMultilevelMenu,forms,i0) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -157,7 +157,7 @@
         BreadcrumbComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'app-breadcrumb',
-                        template: "<ol class=\"breadcrumb\">\r\n  <li *ngFor=\"let breadcrumb of breadcrumbs$ | async; last as isLast;\"\r\n      class=\"breadcrumb-item\"\r\n      [ngClass]=\"{'active': isLast}\" aria-current=\"page\">\r\n    <a *ngIf=\"!isLast; else lastRoute\"\r\n        [routerLink]=\"[breadcrumb.url]\"\r\n        routerLinkActive=\"active\">\r\n      {{ breadcrumb.label }}\r\n    </a>\r\n    <ng-template #lastRoute>{{ breadcrumb.label }}</ng-template>\r\n  </li>\r\n</ol>\r\n<mat-icon class=\"font-size-24\">apps</mat-icon>",
+                        template: "<ol class=\"breadcrumb\">\r\n  <li *ngFor=\"let breadcrumb of breadcrumbs$ | async; last as isLast;\"\r\n      class=\"breadcrumb-item\"\r\n      [ngClass]=\"{'active': isLast}\" aria-current=\"page\">\r\n    <a *ngIf=\"!isLast; else lastRoute\"\r\n        [routerLink]=\"[breadcrumb.url]\"\r\n        routerLinkActive=\"active\">\r\n      {{ breadcrumb.label }}\r\n    </a>\r\n    <ng-template #lastRoute>{{ breadcrumb.label }}</ng-template>\r\n  </li>\r\n</ol>",
                         styles: [".breadcrumb li{display:inline}.breadcrumb li+li:before{content:'\\E5CC';font-family:'Material Icons';color:rgba(25,25,25,.32);padding-left:4px;padding-right:4px}.breadcrumb{font-size:14px;font-style:normal;font-weight:600}.breadcrumb a{color:rgba(25,25,25,.32);text-decoration:none}"]
                     }] }
         ];
@@ -220,6 +220,7 @@
                             material.MatTooltipModule,
                             material.MatTreeModule,
                             scrolling.ScrollingModule,
+                            flexLayout.FlexLayoutModule
                         ]
                     },] }
         ];
@@ -918,15 +919,17 @@
         CardListComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'app-card-list',
-                        template: "card",
-                        styles: ["nav{color:#fff;width:100%}.navbar{background-color:#363636;height:66px;align-items:center}.navbar-container{position:relative;height:100%}.navbar-container div.flex{height:100%}"]
+                        template: "<div *ngIf=\"list && list.length\" id=\"card-list\" fxFlex fxLayout=\"column\" [style.background-color]=\"backgroundColor\">\r\n  <div *ngIf=\"title\">\r\n     {{title}}\r\n  </div>\r\n  <div style=\"padding: 10px\" fxLayout=\"row wrap\">\r\n    <mat-card class=\"lista\" *ngFor=\"let html of list\" [innerHTML]=\"html\" [ngStyle.lt-md]=\"{'margin-bottom': '20px'}\" [style.width]=\"width\" [style.width]=\"height\">  \r\n    </mat-card>\r\n  </div>\r\n</div>",
+                        styles: ["#card-list{width:100%;padding:10px;background-color:#f1f1f1;border-radius:4px}#card-list .lista{margin-left:20px;background-color:pink;width:100px;height:150px}"]
                     }] }
         ];
         /** @nocollapse */
         CardListComponent.ctorParameters = function () { return []; };
         CardListComponent.propDecorators = {
-            color: [{ type: i0.Input }],
+            title: [{ type: i0.Input }],
+            list: [{ type: i0.Input }],
             backgroundColor: [{ type: i0.Input }],
+            width: [{ type: i0.Input }],
             height: [{ type: i0.Input }]
         };
         return CardListComponent;
