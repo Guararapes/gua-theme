@@ -1,5 +1,5 @@
 <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
-    <mat-form-field appearance="standard" style="background-color: brown; width: 100%" [style.width]="width"
+    <mat-form-field appearance="standard" [style.width]="width"
       [style.height]="height" fxLayoutAlign="center center">
       <div [class]="'flex flex-row input-search' + (isSearchExpanded ? ' input-search-open':' ')">
         <div class="flex-item" style="padding-left: 5px;">
