@@ -13,6 +13,7 @@ export class SideMenuComponent implements OnInit {
   @HostBinding('class.expanded')
   @Input() isSideMenuExpanded;
   @Input() appitems: MultilevelNodes[];
+  @Input() marginTop: string;
   config: Configuration = {
     paddingAtStart: true,
     classname: 'side-menu',

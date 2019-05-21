@@ -1,4 +1,4 @@
-<div class="menu-wrapper" >
+<div class="menu-wrapper" [style.margin-top]="marginTop">
   <ng-material-multilevel-menu [configuration]='config' [items]='appitems' (selectedItem)="selectedItem($event)">
   </ng-material-multilevel-menu>
 </div>
