@@ -10,65 +10,9 @@ export class SideMenuComponent implements OnInit {
 
 
   @Output() itemClicked = new EventEmitter();
-  @HostBinding('class.expanded') @Input() isSideMenuExpanded = true;
-
-  appitems: MultilevelNodes[] = [
-    {
-      label: 'Malharia',
-      icon: 'add',
-      items: [
-        {
-          label: 'Item 1.1',
-          link: '/item-1-1',
-        },
-        {
-          label: 'Item 1.2',
-          link: '/item-1-2',
-        },
-        {
-          label: 'Item 1.1',
-          link: '/item-1-1',
-        },
-        {
-          label: 'Item 1.2',
-          link: '/item-1-2',
-        },
-        {
-          label: 'Item 1.1',
-          link: '/item-1-1',
-        },
-        {
-          label: 'Item 1.2',
-          link: '/item-1-2',
-        },
-      ]
-    },
-    {
-      label: 'Tinturaria',
-      icon: 'alarm',
-      items: [
-        {
-          label: 'Item 2.1',
-          link: '/item-2-1',
-        },
-        {
-          label: 'Item 2.2',
-          link: '/item-2-2',
-        }
-      ]
-    },
-    {
-      label: 'Costura',
-      link: '/item-3',
-      icon: 'offline_pin'
-    },
-    {
-      label: 'Item 4',
-      link: '/item-4',
-      icon: 'star_rate',
-      hidden: true
-    }
-  ];
+  @HostBinding('class.expanded')
+  @Input() isSideMenuExpanded;
+  @Input() appitems: MultilevelNodes[];
   config: Configuration = {
     paddingAtStart: true,
     classname: 'side-menu',
@@ -84,13 +28,71 @@ export class SideMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.appitems) {
+      this.appitems = [
+        {
+          label: 'Malharia',
+          icon: 'add',
+          items: [
+            {
+              label: 'Item 1.1',
+              link: '/item-1-1',
+            },
+            {
+              label: 'Item 1.2',
+              link: '/item-1-2',
+            },
+            {
+              label: 'Item 1.1',
+              link: '/item-1-1',
+            },
+            {
+              label: 'Item 1.2',
+              link: '/item-1-2',
+            },
+            {
+              label: 'Item 1.1',
+              link: '/item-1-1',
+            },
+            {
+              label: 'Item 1.2',
+              link: '/item-1-2',
+            },
+          ]
+        },
+        {
+          label: 'Tinturaria',
+          icon: 'alarm',
+          items: [
+            {
+              label: 'Item 2.1',
+              link: '/item-2-1',
+            },
+            {
+              label: 'Item 2.2',
+              link: '/item-2-2',
+            }
+          ]
+        },
+        {
+          label: 'Costura',
+          link: '/item-3',
+          icon: 'offline_pin'
+        },
+        {
+          label: 'Item 4',
+          link: '/item-4',
+          icon: 'star_rate',
+          hidden: true
+        }
+      ]
+    }
 
   }
 
 
   selectedItem($event) {
     this.itemClicked.emit($event);
-    console.log($event);
   }
 
   closeMenu($event) {

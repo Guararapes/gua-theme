@@ -10,7 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatTreeModule } from '@angular/material';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { Injectable, Component, NgModule, Input, Output, EventEmitter, HostBinding, defineInjectable } from '@angular/core';
+import { Injectable, NgModule, Component, Input, Output, EventEmitter, HostBinding, defineInjectable } from '@angular/core';
 
 /**
  * @fileoverview added by tsickle
@@ -322,64 +322,6 @@ InputSearchModule.decorators = [
 class SideMenuComponent {
     constructor() {
         this.itemClicked = new EventEmitter();
-        this.isSideMenuExpanded = true;
-        this.appitems = [
-            {
-                label: 'Malharia',
-                icon: 'add',
-                items: [
-                    {
-                        label: 'Item 1.1',
-                        link: '/item-1-1',
-                    },
-                    {
-                        label: 'Item 1.2',
-                        link: '/item-1-2',
-                    },
-                    {
-                        label: 'Item 1.1',
-                        link: '/item-1-1',
-                    },
-                    {
-                        label: 'Item 1.2',
-                        link: '/item-1-2',
-                    },
-                    {
-                        label: 'Item 1.1',
-                        link: '/item-1-1',
-                    },
-                    {
-                        label: 'Item 1.2',
-                        link: '/item-1-2',
-                    },
-                ]
-            },
-            {
-                label: 'Tinturaria',
-                icon: 'alarm',
-                items: [
-                    {
-                        label: 'Item 2.1',
-                        link: '/item-2-1',
-                    },
-                    {
-                        label: 'Item 2.2',
-                        link: '/item-2-2',
-                    }
-                ]
-            },
-            {
-                label: 'Costura',
-                link: '/item-3',
-                icon: 'offline_pin'
-            },
-            {
-                label: 'Item 4',
-                link: '/item-4',
-                icon: 'star_rate',
-                hidden: true
-            }
-        ];
         this.config = {
             paddingAtStart: true,
             classname: 'side-menu',
@@ -394,6 +336,65 @@ class SideMenuComponent {
      * @return {?}
      */
     ngOnInit() {
+        if (!this.appitems) {
+            this.appitems = [
+                {
+                    label: 'Malharia',
+                    icon: 'add',
+                    items: [
+                        {
+                            label: 'Item 1.1',
+                            link: '/item-1-1',
+                        },
+                        {
+                            label: 'Item 1.2',
+                            link: '/item-1-2',
+                        },
+                        {
+                            label: 'Item 1.1',
+                            link: '/item-1-1',
+                        },
+                        {
+                            label: 'Item 1.2',
+                            link: '/item-1-2',
+                        },
+                        {
+                            label: 'Item 1.1',
+                            link: '/item-1-1',
+                        },
+                        {
+                            label: 'Item 1.2',
+                            link: '/item-1-2',
+                        },
+                    ]
+                },
+                {
+                    label: 'Tinturaria',
+                    icon: 'alarm',
+                    items: [
+                        {
+                            label: 'Item 2.1',
+                            link: '/item-2-1',
+                        },
+                        {
+                            label: 'Item 2.2',
+                            link: '/item-2-2',
+                        }
+                    ]
+                },
+                {
+                    label: 'Costura',
+                    link: '/item-3',
+                    icon: 'offline_pin'
+                },
+                {
+                    label: 'Item 4',
+                    link: '/item-4',
+                    icon: 'star_rate',
+                    hidden: true
+                }
+            ];
+        }
     }
     /**
      * @param {?} $event
@@ -401,7 +402,6 @@ class SideMenuComponent {
      */
     selectedItem($event) {
         this.itemClicked.emit($event);
-        console.log($event);
     }
     /**
      * @param {?} $event
@@ -424,7 +424,8 @@ SideMenuComponent.decorators = [
 SideMenuComponent.ctorParameters = () => [];
 SideMenuComponent.propDecorators = {
     itemClicked: [{ type: Output }],
-    isSideMenuExpanded: [{ type: HostBinding, args: ['class.expanded',] }, { type: Input }]
+    isSideMenuExpanded: [{ type: HostBinding, args: ['class.expanded',] }, { type: Input }],
+    appitems: [{ type: Input }]
 };
 
 /**

@@ -2,7 +2,7 @@ import { OnInit, EventEmitter } from '@angular/core';
 import { Configuration, MultilevelNodes } from 'ng-material-multilevel-menu';
 export declare class SideMenuComponent implements OnInit {
     itemClicked: EventEmitter<{}>;
-    isSideMenuExpanded: boolean;
+    isSideMenuExpanded: any;
     appitems: MultilevelNodes[];
     config: Configuration;
     constructor();

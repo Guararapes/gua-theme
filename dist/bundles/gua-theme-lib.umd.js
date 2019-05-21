@@ -405,64 +405,6 @@
     var SideMenuComponent = /** @class */ (function () {
         function SideMenuComponent() {
             this.itemClicked = new i0.EventEmitter();
-            this.isSideMenuExpanded = true;
-            this.appitems = [
-                {
-                    label: 'Malharia',
-                    icon: 'add',
-                    items: [
-                        {
-                            label: 'Item 1.1',
-                            link: '/item-1-1',
-                        },
-                        {
-                            label: 'Item 1.2',
-                            link: '/item-1-2',
-                        },
-                        {
-                            label: 'Item 1.1',
-                            link: '/item-1-1',
-                        },
-                        {
-                            label: 'Item 1.2',
-                            link: '/item-1-2',
-                        },
-                        {
-                            label: 'Item 1.1',
-                            link: '/item-1-1',
-                        },
-                        {
-                            label: 'Item 1.2',
-                            link: '/item-1-2',
-                        },
-                    ]
-                },
-                {
-                    label: 'Tinturaria',
-                    icon: 'alarm',
-                    items: [
-                        {
-                            label: 'Item 2.1',
-                            link: '/item-2-1',
-                        },
-                        {
-                            label: 'Item 2.2',
-                            link: '/item-2-2',
-                        }
-                    ]
-                },
-                {
-                    label: 'Costura',
-                    link: '/item-3',
-                    icon: 'offline_pin'
-                },
-                {
-                    label: 'Item 4',
-                    link: '/item-4',
-                    icon: 'star_rate',
-                    hidden: true
-                }
-            ];
             this.config = {
                 paddingAtStart: true,
                 classname: 'side-menu',
@@ -480,6 +422,65 @@
          * @return {?}
          */
             function () {
+                if (!this.appitems) {
+                    this.appitems = [
+                        {
+                            label: 'Malharia',
+                            icon: 'add',
+                            items: [
+                                {
+                                    label: 'Item 1.1',
+                                    link: '/item-1-1',
+                                },
+                                {
+                                    label: 'Item 1.2',
+                                    link: '/item-1-2',
+                                },
+                                {
+                                    label: 'Item 1.1',
+                                    link: '/item-1-1',
+                                },
+                                {
+                                    label: 'Item 1.2',
+                                    link: '/item-1-2',
+                                },
+                                {
+                                    label: 'Item 1.1',
+                                    link: '/item-1-1',
+                                },
+                                {
+                                    label: 'Item 1.2',
+                                    link: '/item-1-2',
+                                },
+                            ]
+                        },
+                        {
+                            label: 'Tinturaria',
+                            icon: 'alarm',
+                            items: [
+                                {
+                                    label: 'Item 2.1',
+                                    link: '/item-2-1',
+                                },
+                                {
+                                    label: 'Item 2.2',
+                                    link: '/item-2-2',
+                                }
+                            ]
+                        },
+                        {
+                            label: 'Costura',
+                            link: '/item-3',
+                            icon: 'offline_pin'
+                        },
+                        {
+                            label: 'Item 4',
+                            link: '/item-4',
+                            icon: 'star_rate',
+                            hidden: true
+                        }
+                    ];
+                }
             };
         /**
          * @param {?} $event
@@ -491,7 +492,6 @@
          */
             function ($event) {
                 this.itemClicked.emit($event);
-                console.log($event);
             };
         /**
          * @param {?} $event
@@ -517,7 +517,8 @@
         SideMenuComponent.ctorParameters = function () { return []; };
         SideMenuComponent.propDecorators = {
             itemClicked: [{ type: i0.Output }],
-            isSideMenuExpanded: [{ type: i0.HostBinding, args: ['class.expanded',] }, { type: i0.Input }]
+            isSideMenuExpanded: [{ type: i0.HostBinding, args: ['class.expanded',] }, { type: i0.Input }],
+            appitems: [{ type: i0.Input }]
         };
         return SideMenuComponent;
     }());
