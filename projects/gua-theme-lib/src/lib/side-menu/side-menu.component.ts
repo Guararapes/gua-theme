@@ -11,7 +11,7 @@ export class SideMenuComponent implements OnInit {
 
   @Output() itemClicked = new EventEmitter();
   @HostBinding('class.expanded')
-  @Input() isSideMenuExpanded;
+  @Input() isSideMenuExpanded = true;
   @Input() appitems: MultilevelNodes[];
   config: Configuration = {
     paddingAtStart: true,
@@ -20,12 +20,14 @@ export class SideMenuComponent implements OnInit {
     fontColor: 'rgb(117, 117, 117)',
     backgroundColor: 'rgb(255, 255, 255)',
     selectedListFontColor: 'rgb(39, 149, 223)',
-    collapseOnSelect: true
+    collapseOnSelect: true,
+    interfaceWithRoute: true
   };
 
   constructor() {
 
   }
+
 
   ngOnInit() {
     if (!this.appitems) {
@@ -87,12 +89,12 @@ export class SideMenuComponent implements OnInit {
         }
       ]
     }
-
   }
 
 
   selectedItem($event) {
     this.itemClicked.emit($event);
+    console.log($event);
   }
 
   closeMenu($event) {
