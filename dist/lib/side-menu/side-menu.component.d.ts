@@ -4,6 +4,7 @@ export declare class SideMenuComponent implements OnInit {
     itemClicked: EventEmitter<{}>;
     isSideMenuExpanded: any;
     appitems: MultilevelNodes[];
+    marginTop: string;
     config: Configuration;
     constructor();
     ngOnInit(): void;
