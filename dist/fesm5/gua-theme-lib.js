@@ -248,6 +248,7 @@ var InputSearchComponent = /** @class */ (function () {
     function InputSearchComponent(formBuilder) {
         this.formBuilder = formBuilder;
         this.isSearchExpanded = false;
+        this.getValue = new EventEmitter();
     }
     /**
      * @return {?}
@@ -284,7 +285,6 @@ var InputSearchComponent = /** @class */ (function () {
      */
     function ($event) {
         if (!this.searchForm.controls['keyword'].value) {
-            console.log('Fechar search');
             this.retractSearch();
         }
     };
@@ -316,13 +316,13 @@ var InputSearchComponent = /** @class */ (function () {
      */
     function () {
         if (this.searchForm.valid) {
-            console.log('Send request..');
+            this.getValue.emit(this.searchForm.value);
         }
     };
     InputSearchComponent.decorators = [
         { type: Component, args: [{
                     selector: 'app-input-search',
-                    template: "<form [formGroup]=\"searchForm\" (ngSubmit)=\"onSearchSubmit()\">\r\n    <mat-form-field appearance=\"standard\">\r\n      <div [class]=\"'flex flex-row input-search' + (isSearchExpanded ? ' input-search-open':' ')\">\r\n          <div class=\"flex-item\" style=\"padding-left: 5px;\">\r\n              <input matInput (blur)=\"onBlurSearch($event)\" formControlName=\"keyword\" placeholder=\"Pesquisar...\"/>\r\n          </div>\r\n          <div #searchIcon class=\"flex-item\" (click)=\"onClickSearch()\">\r\n              <mat-icon class=\"font-size-24\">search</mat-icon>\r\n          </div>\r\n      </div>\r\n    </mat-form-field>\r\n</form>\r\n",
+                    template: "<form [formGroup]=\"searchForm\" (ngSubmit)=\"onSearchSubmit()\">\r\n    <mat-form-field appearance=\"standard\" [style.height]=\"height\">\r\n      <div [class]=\"'flex flex-row input-search' + (isSearchExpanded ? ' input-search-open':' ')\">\r\n          <div class=\"flex-item\" style=\"padding-left: 5px;\">\r\n              <input matInput (blur)=\"onBlurSearch($event)\" formControlName=\"keyword\" placeholder=\"Pesquisar...\"/>\r\n          </div>\r\n          <div #searchIcon class=\"flex-item\" (click)=\"onClickSearch()\">\r\n              <mat-icon class=\"font-size-24\">search</mat-icon>\r\n          </div>\r\n      </div>\r\n    </mat-form-field>\r\n</form>\r\n",
                     styles: ["input{padding-top:5px}.input-search{background-color:transparent;height:25px;width:25px;float:right;padding:2px 10px 3px;border-radius:1.6rem;transition:width .5s,padding .5s,color .5s,background-color .5s;border:.5px solid transparent;cursor:pointer}.input-search-open{background-color:#fff;color:#000;width:100%;border:.5px solid #000}::ng-deep .mat-form-field-appearance-standard .mat-form-field-underline{height:0!important}::ng-deep .mat-form-field-appearance-standard .mat-form-field-ripple{height:0!important}"]
                 }] }
     ];
@@ -330,6 +330,10 @@ var InputSearchComponent = /** @class */ (function () {
     InputSearchComponent.ctorParameters = function () { return [
         { type: FormBuilder }
     ]; };
+    InputSearchComponent.propDecorators = {
+        height: [{ type: Input }],
+        getValue: [{ type: Output }]
+    };
     return InputSearchComponent;
 }());
 
