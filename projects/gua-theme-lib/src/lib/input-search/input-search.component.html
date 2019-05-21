@@ -1,12 +1,14 @@
 <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
-    <mat-form-field appearance="standard" [style.height]="height">
+    <mat-form-field appearance="standard" style="background-color: brown; width: 100%" [style.width]="width"
+      [style.height]="height" fxLayoutAlign="center center">
       <div [class]="'flex flex-row input-search' + (isSearchExpanded ? ' input-search-open':' ')">
-          <div class="flex-item" style="padding-left: 5px;">
-              <input matInput (blur)="onBlurSearch($event)" formControlName="keyword" placeholder="Pesquisar..."/>
-          </div>
-          <div #searchIcon class="flex-item" (click)="onClickSearch()">
-              <mat-icon class="font-size-24">search</mat-icon>
-          </div>
+        <div class="flex-item" style="padding-left: 5px;">
+          <input matInput (blur)="onBlurSearch($event)" formControlName="keyword" placeholder="Pesquisar..." />
+        </div>
+        <div #searchIcon class="flex-item" (click)="onClickSearch()">
+          <mat-icon class="font-size-24">search</mat-icon>
+        </div>
       </div>
     </mat-form-field>
-</form>
+  </form>
+  

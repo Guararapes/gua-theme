@@ -5,6 +5,7 @@ export declare class InputSearchComponent implements OnInit {
     isSearchExpanded: boolean;
     searchForm: FormGroup;
     height: string;
+    width: string;
     getValue: EventEmitter<{}>;
     constructor(formBuilder: FormBuilder);
     ngOnInit(): void;

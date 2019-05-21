@@ -11,6 +11,7 @@ export class InputSearchComponent implements OnInit {
   searchForm: FormGroup;
 
   @Input() height: string;
+  @Input() width: string;
   @Output() getValue = new EventEmitter();
 
   constructor(
