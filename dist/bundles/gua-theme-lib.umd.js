@@ -405,7 +405,6 @@
     var SideMenuComponent = /** @class */ (function () {
         function SideMenuComponent() {
             this.itemClicked = new i0.EventEmitter();
-            this.isSideMenuExpanded = true;
             this.config = {
                 paddingAtStart: true,
                 classname: 'side-menu',

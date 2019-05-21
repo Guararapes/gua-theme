@@ -11,7 +11,7 @@ export class SideMenuComponent implements OnInit {
 
   @Output() itemClicked = new EventEmitter();
   @HostBinding('class.expanded')
-  @Input() isSideMenuExpanded = true;
+  @Input() isSideMenuExpanded;
   @Input() appitems: MultilevelNodes[];
   config: Configuration = {
     paddingAtStart: true,

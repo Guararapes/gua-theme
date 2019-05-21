@@ -364,7 +364,6 @@ var InputSearchModule = /** @class */ (function () {
 var SideMenuComponent = /** @class */ (function () {
     function SideMenuComponent() {
         this.itemClicked = new EventEmitter();
-        this.isSideMenuExpanded = true;
         this.config = {
             paddingAtStart: true,
             classname: 'side-menu',
