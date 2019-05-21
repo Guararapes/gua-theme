@@ -1,5 +1,5 @@
 <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
-    <mat-form-field appearance="standard">
+    <mat-form-field appearance="standard" [style.height]="height">
       <div [class]="'flex flex-row input-search' + (isSearchExpanded ? ' input-search-open':' ')">
           <div class="flex-item" style="padding-left: 5px;">
               <input matInput (blur)="onBlurSearch($event)" formControlName="keyword" placeholder="Pesquisar..."/>

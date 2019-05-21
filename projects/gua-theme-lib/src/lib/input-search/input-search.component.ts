@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class InputSearchComponent implements OnInit {
   isSearchExpanded = false;
   searchForm: FormGroup;
+
+  @Input() height: string;
+  @Output() getValue = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder
@@ -30,7 +33,6 @@ export class InputSearchComponent implements OnInit {
 
   onBlurSearch($event) {
     if (!this.searchForm.controls['keyword'].value) {
-      console.log('Fechar search');
       this.retractSearch();
     }
   }
@@ -46,7 +48,7 @@ export class InputSearchComponent implements OnInit {
 
   onSearchSubmit() {
     if (this.searchForm.valid) {
-      console.log('Send request..');
+     this.getValue.emit(this.searchForm.value)
     }
   }
 
