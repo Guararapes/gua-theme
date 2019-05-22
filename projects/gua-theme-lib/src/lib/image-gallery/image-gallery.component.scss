@@ -1,0 +1,42 @@
+:host {
+  .imagem-principal {
+    height: 80%;
+  }
+
+  $radius-card: 10px;
+
+  .mat-card {
+    cursor: pointer;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none !important;
+    background-color: transparent;
+  }
+
+  .mat-card>img {
+    border-radius: $radius-card;
+    height: 100%;
+    width: 100%;
+    margin-top: 0
+  }
+
+  .selecao-image {
+    height: 100px;
+    width: 100px;
+    padding: 5px
+  }
+
+  .add-btn {
+    width: 100%;
+    border-radius: $radius-card;
+    background-color: rgba($color: #000000, $alpha: .3);
+  }
+
+  .add-icon {
+    height: auto;
+    text-align: center;
+    font-size: 40px
+  }
+}
+

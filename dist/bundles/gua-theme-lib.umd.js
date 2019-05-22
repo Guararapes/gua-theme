@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs/operators'), require('@angular/platform-browser/animations'), require('@angular/common'), require('@angular/router'), require('@angular/cdk/drag-drop'), require('@angular/cdk/scrolling'), require('@angular/cdk/table'), require('@angular/cdk/tree'), require('@angular/flex-layout'), require('@angular/material'), require('ng-material-multilevel-menu'), require('@angular/forms'), require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('gua-theme-lib', ['exports', 'rxjs/operators', '@angular/platform-browser/animations', '@angular/common', '@angular/router', '@angular/cdk/drag-drop', '@angular/cdk/scrolling', '@angular/cdk/table', '@angular/cdk/tree', '@angular/flex-layout', '@angular/material', 'ng-material-multilevel-menu', '@angular/forms', '@angular/core'], factory) :
-    (factory((global['gua-theme-lib'] = {}),global.rxjs.operators,global.ng.platformBrowser.animations,global.ng.common,global.ng.router,global.ng.cdk['drag-drop'],global.ng.cdk.scrolling,global.ng.cdk.table,global.ng.cdk.tree,global.ng['flex-layout'],global.ng.material,global.ngMaterialMultilevelMenu,global.ng.forms,global.ng.core));
-}(this, (function (exports,operators,animations,common,router,dragDrop,scrolling,table,tree,flexLayout,material,ngMaterialMultilevelMenu,forms,i0) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs/operators'), require('@angular/platform-browser/animations'), require('@angular/common'), require('@angular/router'), require('@angular/cdk/drag-drop'), require('@angular/cdk/scrolling'), require('@angular/cdk/table'), require('@angular/cdk/tree'), require('@angular/flex-layout'), require('ng-material-multilevel-menu'), require('@angular/forms'), require('@angular/core'), require('@angular/material')) :
+    typeof define === 'function' && define.amd ? define('gua-theme-lib', ['exports', 'rxjs/operators', '@angular/platform-browser/animations', '@angular/common', '@angular/router', '@angular/cdk/drag-drop', '@angular/cdk/scrolling', '@angular/cdk/table', '@angular/cdk/tree', '@angular/flex-layout', 'ng-material-multilevel-menu', '@angular/forms', '@angular/core', '@angular/material'], factory) :
+    (factory((global['gua-theme-lib'] = {}),global.rxjs.operators,global.ng.platformBrowser.animations,global.ng.common,global.ng.router,global.ng.cdk['drag-drop'],global.ng.cdk.scrolling,global.ng.cdk.table,global.ng.cdk.tree,global.ng['flex-layout'],global.ngMaterialMultilevelMenu,global.ng.forms,global.ng.core,global.ng.material));
+}(this, (function (exports,operators,animations,common,router,dragDrop,scrolling,table,tree,flexLayout,ngMaterialMultilevelMenu,forms,i0,material) { 'use strict';
 
     /**
      * @fileoverview added by tsickle
@@ -969,6 +969,134 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var ImageGalleryZoomComponent = /** @class */ (function () {
+        function ImageGalleryZoomComponent(dialogRef, data) {
+            this.dialogRef = dialogRef;
+            this.data = data;
+        }
+        /**
+         * @return {?}
+         */
+        ImageGalleryZoomComponent.prototype.closeDialog = /**
+         * @return {?}
+         */
+            function () {
+                this.dialogRef.close();
+            };
+        ImageGalleryZoomComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'gua-image-gallery-zoom',
+                        template: "<div [style.color]=\"data?.color\" class=\"close-button\">\r\n  <button mat-icon-button (click)=\"closeDialog()\">\r\n    <i class=\"material-icons\" (click)=\"closeDialog()\">close</i>\r\n  </button>\r\n</div>\r\n<div class=\"image\">\r\n  <img [src]=\"data.url\">\r\n</div>\r\n",
+                        styles: [":host{background-color:#000}:host .image{display:flex;align-items:center;justify-content:center;align-items:center;height:100%}:host img{align-content:center;height:inherit}:host .close-button{color:#000;position:absolute;right:0;top:0}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        ImageGalleryZoomComponent.ctorParameters = function () {
+            return [
+                { type: material.MatDialogRef },
+                { type: undefined, decorators: [{ type: i0.Inject, args: [material.MAT_DIALOG_DATA,] }] }
+            ];
+        };
+        return ImageGalleryZoomComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var ImageGalleryComponent = /** @class */ (function () {
+        function ImageGalleryComponent(dialog) {
+            this.dialog = dialog;
+            this.onAddImage = new i0.EventEmitter();
+        }
+        /**
+         * @return {?}
+         */
+        ImageGalleryComponent.prototype.ngOnInit = /**
+         * @return {?}
+         */
+            function () {
+                if (this.images.length) {
+                    this.selectedImage = this.images[0];
+                }
+            };
+        /**
+         * @return {?}
+         */
+        ImageGalleryComponent.prototype.openZoom = /**
+         * @return {?}
+         */
+            function () {
+                this.dialog.open(ImageGalleryZoomComponent, {
+                    disableClose: true,
+                    height: '100%',
+                    width: '100%',
+                    maxWidth: '100vw',
+                    maxHeight: '100vh',
+                    data: { url: this.selectedImage, color: this.closeButtonColor },
+                    panelClass: this.panelClass,
+                });
+            };
+        /**
+         * @param {?} $event
+         * @return {?}
+         */
+        ImageGalleryComponent.prototype.onClick = /**
+         * @param {?} $event
+         * @return {?}
+         */
+            function ($event) {
+                this.onAddImage.emit($event);
+            };
+        ImageGalleryComponent.decorators = [
+            { type: i0.Component, args: [{
+                        selector: 'gua-image-gallery',
+                        template: "<ng-container *ngIf=\"images && images.length\">\r\n  <div fxFlex fxFlexFill>\r\n    <mat-card class=\"imagem-principal\" (click)=\"openZoom()\" fxLayoutAlign=\"center center\">\r\n      <img mat-card-image [src]=\"selectedImage\">\r\n    </mat-card>\r\n    <div fxLayout=\"row wamp\" fxLayoutAlign=\"center\">\r\n      <div *ngFor=\"let i of images\" fxLayout=\"row\" (click)=\"selectedImage = i;\" class=\"selecao-image\">\r\n        <mat-card fxLayoutAlign=\"center center\">\r\n          <img mat-card-image [src]=\"i\">\r\n        </mat-card>\r\n      </div>\r\n      <div *ngIf=\"onAddImage?.observers?.length\" fxLayout=\"row\" class=\"selecao-image\">\r\n        <mat-card class=\"add-btn\" fxLayoutAlign=\"center center\" (click)=\"onClick($event)\">\r\n          <mat-icon class=\"add-icon\" fxFlex>add_circle</mat-icon>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ng-container>\r\n",
+                        styles: [":host .imagem-principal{height:80%}:host .mat-card{cursor:pointer;border-radius:0;padding:0;margin:0;box-shadow:none!important;background-color:transparent}:host .mat-card>img{border-radius:10px;height:100%;width:100%;margin-top:0}:host .selecao-image{height:100px;width:100px;padding:5px}:host .add-btn{width:100%;border-radius:10px;background-color:rgba(0,0,0,.3)}:host .add-icon{height:auto;text-align:center;font-size:40px}"]
+                    }] }
+        ];
+        /** @nocollapse */
+        ImageGalleryComponent.ctorParameters = function () {
+            return [
+                { type: material.MatDialog }
+            ];
+        };
+        ImageGalleryComponent.propDecorators = {
+            images: [{ type: i0.Input }],
+            closeButtonColor: [{ type: i0.Input }],
+            panelClass: [{ type: i0.Input }],
+            onAddImage: [{ type: i0.Output }]
+        };
+        return ImageGalleryComponent;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var ImageGalleryModule = /** @class */ (function () {
+        function ImageGalleryModule() {
+        }
+        ImageGalleryModule.decorators = [
+            { type: i0.NgModule, args: [{
+                        imports: [
+                            SharedModule
+                        ],
+                        declarations: [
+                            ImageGalleryComponent,
+                            ImageGalleryZoomComponent,
+                        ],
+                        entryComponents: [ImageGalleryZoomComponent],
+                        exports: [ImageGalleryComponent]
+                    },] }
+        ];
+        return ImageGalleryModule;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     var GuaThemeModule = /** @class */ (function () {
         function GuaThemeModule() {
         }
@@ -985,7 +1113,8 @@
                             PageTitleModule,
                             ToolbarModule,
                             LabelModule,
-                            CardListModule
+                            CardListModule,
+                            ImageGalleryModule
                         ]
                     },] }
         ];
@@ -1011,6 +1140,9 @@
     exports.ɵm = ButtonModule;
     exports.ɵv = CardListComponent;
     exports.ɵu = CardListModule;
+    exports.ɵy = ImageGalleryZoomComponent;
+    exports.ɵx = ImageGalleryComponent;
+    exports.ɵw = ImageGalleryModule;
     exports.ɵf = InputSearchComponent;
     exports.ɵe = InputSearchModule;
     exports.ɵt = LabelComponent;

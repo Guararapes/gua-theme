@@ -9,6 +9,7 @@ import { PageTitleModule } from './page-title/page-title.module';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { LabelModule } from './label/label.module';
 import { CardListModule } from './card-list/card-list.module';
+import { ImageGalleryModule } from './image-gallery/image-gallery.module';
 
 @NgModule({
   declarations: [GuaThemeComponent],
@@ -22,7 +23,8 @@ import { CardListModule } from './card-list/card-list.module';
     PageTitleModule,
     ToolbarModule,
     LabelModule,
-    CardListModule
+    CardListModule,
+    ImageGalleryModule
   ]
 })
 export class GuaThemeModule { }

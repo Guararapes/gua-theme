@@ -8,10 +8,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatTreeModule } from '@angular/material';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { Injectable, NgModule, Component, Input, Output, EventEmitter, HostBinding, defineInjectable } from '@angular/core';
+import { Injectable, NgModule, Component, Input, Output, EventEmitter, Inject, HostBinding, defineInjectable } from '@angular/core';
+import { MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatTreeModule, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 
 /**
  * @fileoverview added by tsickle
@@ -928,6 +928,130 @@ var CardListModule = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+var ImageGalleryZoomComponent = /** @class */ (function () {
+    function ImageGalleryZoomComponent(dialogRef, data) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+    }
+    /**
+     * @return {?}
+     */
+    ImageGalleryZoomComponent.prototype.closeDialog = /**
+     * @return {?}
+     */
+    function () {
+        this.dialogRef.close();
+    };
+    ImageGalleryZoomComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'gua-image-gallery-zoom',
+                    template: "<div [style.color]=\"data?.color\" class=\"close-button\">\r\n  <button mat-icon-button (click)=\"closeDialog()\">\r\n    <i class=\"material-icons\" (click)=\"closeDialog()\">close</i>\r\n  </button>\r\n</div>\r\n<div class=\"image\">\r\n  <img [src]=\"data.url\">\r\n</div>\r\n",
+                    styles: [":host{background-color:#000}:host .image{display:flex;align-items:center;justify-content:center;align-items:center;height:100%}:host img{align-content:center;height:inherit}:host .close-button{color:#000;position:absolute;right:0;top:0}"]
+                }] }
+    ];
+    /** @nocollapse */
+    ImageGalleryZoomComponent.ctorParameters = function () { return [
+        { type: MatDialogRef },
+        { type: undefined, decorators: [{ type: Inject, args: [MAT_DIALOG_DATA,] }] }
+    ]; };
+    return ImageGalleryZoomComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var ImageGalleryComponent = /** @class */ (function () {
+    function ImageGalleryComponent(dialog) {
+        this.dialog = dialog;
+        this.onAddImage = new EventEmitter();
+    }
+    /**
+     * @return {?}
+     */
+    ImageGalleryComponent.prototype.ngOnInit = /**
+     * @return {?}
+     */
+    function () {
+        if (this.images.length) {
+            this.selectedImage = this.images[0];
+        }
+    };
+    /**
+     * @return {?}
+     */
+    ImageGalleryComponent.prototype.openZoom = /**
+     * @return {?}
+     */
+    function () {
+        this.dialog.open(ImageGalleryZoomComponent, {
+            disableClose: true,
+            height: '100%',
+            width: '100%',
+            maxWidth: '100vw',
+            maxHeight: '100vh',
+            data: { url: this.selectedImage, color: this.closeButtonColor },
+            panelClass: this.panelClass,
+        });
+    };
+    /**
+     * @param {?} $event
+     * @return {?}
+     */
+    ImageGalleryComponent.prototype.onClick = /**
+     * @param {?} $event
+     * @return {?}
+     */
+    function ($event) {
+        this.onAddImage.emit($event);
+    };
+    ImageGalleryComponent.decorators = [
+        { type: Component, args: [{
+                    selector: 'gua-image-gallery',
+                    template: "<ng-container *ngIf=\"images && images.length\">\r\n  <div fxFlex fxFlexFill>\r\n    <mat-card class=\"imagem-principal\" (click)=\"openZoom()\" fxLayoutAlign=\"center center\">\r\n      <img mat-card-image [src]=\"selectedImage\">\r\n    </mat-card>\r\n    <div fxLayout=\"row wamp\" fxLayoutAlign=\"center\">\r\n      <div *ngFor=\"let i of images\" fxLayout=\"row\" (click)=\"selectedImage = i;\" class=\"selecao-image\">\r\n        <mat-card fxLayoutAlign=\"center center\">\r\n          <img mat-card-image [src]=\"i\">\r\n        </mat-card>\r\n      </div>\r\n      <div *ngIf=\"onAddImage?.observers?.length\" fxLayout=\"row\" class=\"selecao-image\">\r\n        <mat-card class=\"add-btn\" fxLayoutAlign=\"center center\" (click)=\"onClick($event)\">\r\n          <mat-icon class=\"add-icon\" fxFlex>add_circle</mat-icon>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ng-container>\r\n",
+                    styles: [":host .imagem-principal{height:80%}:host .mat-card{cursor:pointer;border-radius:0;padding:0;margin:0;box-shadow:none!important;background-color:transparent}:host .mat-card>img{border-radius:10px;height:100%;width:100%;margin-top:0}:host .selecao-image{height:100px;width:100px;padding:5px}:host .add-btn{width:100%;border-radius:10px;background-color:rgba(0,0,0,.3)}:host .add-icon{height:auto;text-align:center;font-size:40px}"]
+                }] }
+    ];
+    /** @nocollapse */
+    ImageGalleryComponent.ctorParameters = function () { return [
+        { type: MatDialog }
+    ]; };
+    ImageGalleryComponent.propDecorators = {
+        images: [{ type: Input }],
+        closeButtonColor: [{ type: Input }],
+        panelClass: [{ type: Input }],
+        onAddImage: [{ type: Output }]
+    };
+    return ImageGalleryComponent;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var ImageGalleryModule = /** @class */ (function () {
+    function ImageGalleryModule() {
+    }
+    ImageGalleryModule.decorators = [
+        { type: NgModule, args: [{
+                    imports: [
+                        SharedModule
+                    ],
+                    declarations: [
+                        ImageGalleryComponent,
+                        ImageGalleryZoomComponent,
+                    ],
+                    entryComponents: [ImageGalleryZoomComponent],
+                    exports: [ImageGalleryComponent]
+                },] }
+    ];
+    return ImageGalleryModule;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 var GuaThemeModule = /** @class */ (function () {
     function GuaThemeModule() {
     }
@@ -944,7 +1068,8 @@ var GuaThemeModule = /** @class */ (function () {
                         PageTitleModule,
                         ToolbarModule,
                         LabelModule,
-                        CardListModule
+                        CardListModule,
+                        ImageGalleryModule
                     ]
                 },] }
     ];
@@ -961,6 +1086,6 @@ var GuaThemeModule = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { GuaThemeService, GuaThemeComponent, GuaThemeModule, BreadcrumbComponent as ɵb, BreadcrumbModule as ɵa, ButtonComponent as ɵn, ButtonModule as ɵm, CardListComponent as ɵv, CardListModule as ɵu, InputSearchComponent as ɵf, InputSearchModule as ɵe, LabelComponent as ɵt, LabelModule as ɵs, MaterialModule as ɵd, NavBarItemComponent as ɵk, NavBarItemModule as ɵj, NavbarComponent as ɵl, NavbarModule as ɵi, PageTitleComponent as ɵp, PageTitleModule as ɵo, SharedModule as ɵc, SideMenuComponent as ɵh, SideMenuModule as ɵg, ToolbarComponent as ɵr, ToolbarModule as ɵq };
+export { GuaThemeService, GuaThemeComponent, GuaThemeModule, BreadcrumbComponent as ɵb, BreadcrumbModule as ɵa, ButtonComponent as ɵn, ButtonModule as ɵm, CardListComponent as ɵv, CardListModule as ɵu, ImageGalleryZoomComponent as ɵy, ImageGalleryComponent as ɵx, ImageGalleryModule as ɵw, InputSearchComponent as ɵf, InputSearchModule as ɵe, LabelComponent as ɵt, LabelModule as ɵs, MaterialModule as ɵd, NavBarItemComponent as ɵk, NavBarItemModule as ɵj, NavbarComponent as ɵl, NavbarModule as ɵi, PageTitleComponent as ɵp, PageTitleModule as ɵo, SharedModule as ɵc, SideMenuComponent as ɵh, SideMenuModule as ɵg, ToolbarComponent as ɵr, ToolbarModule as ɵq };
 
 //# sourceMappingURL=gua-theme-lib.js.map

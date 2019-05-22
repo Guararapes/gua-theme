@@ -1,0 +1,23 @@
+:host {
+  background-color: black;
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  img {
+    align-content: center;
+    height: inherit;
+  }
+
+  .close-button {
+    color: black;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
