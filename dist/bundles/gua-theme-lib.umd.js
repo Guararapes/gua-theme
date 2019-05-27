@@ -1288,6 +1288,7 @@
     exports.GuaThemeService = GuaThemeService;
     exports.GuaThemeComponent = GuaThemeComponent;
     exports.GuaThemeModule = GuaThemeModule;
+    exports.LoadingOverlayService = LoadingOverlayService;
     exports.ɵb = BreadcrumbComponent;
     exports.ɵa = BreadcrumbModule;
     exports.ɵn = ButtonComponent;
@@ -1303,7 +1304,6 @@
     exports.ɵs = LabelModule;
     exports.ɵba = LoadingOverlayComponent;
     exports.ɵz = LoadingOverlayModule;
-    exports.ɵbb = LoadingOverlayService;
     exports.ɵd = MaterialModule;
     exports.ɵk = NavBarItemComponent;
     exports.ɵj = NavBarItemModule;

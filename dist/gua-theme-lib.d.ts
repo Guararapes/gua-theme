@@ -17,7 +17,6 @@ export { LabelComponent as ɵt } from './lib/label/label.component';
 export { LabelModule as ɵs } from './lib/label/label.module';
 export { LoadingOverlayComponent as ɵba } from './lib/loading-overlay/loading-overlay.component';
 export { LoadingOverlayModule as ɵz } from './lib/loading-overlay/loading-overlay.module';
-export { LoadingOverlayService as ɵbb } from './lib/loading-overlay/loading-overlay.service';
 export { MaterialModule as ɵd } from './lib/material.module';
 export { NavBarItemComponent as ɵk } from './lib/navbar/navbar-item/navbar-item.component';
 export { NavBarItemModule as ɵj } from './lib/navbar/navbar-item/navbar-item.module';
