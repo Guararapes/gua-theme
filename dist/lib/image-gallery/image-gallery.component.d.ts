@@ -6,6 +6,8 @@ export declare class ImageGalleryComponent implements OnInit {
     closeButtonColor: string;
     panelClass: string;
     onAddImage: EventEmitter<{}>;
+    proportion: boolean;
+    height: string;
     selectedImage: string;
     constructor(dialog: MatDialog);
     ngOnInit(): void;

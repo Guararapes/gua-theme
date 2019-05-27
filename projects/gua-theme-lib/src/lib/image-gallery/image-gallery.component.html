@@ -1,7 +1,7 @@
 <ng-container *ngIf="images && images.length">
   <div fxFlex fxFlexFill>
     <mat-card class="imagem-principal" (click)="openZoom()" fxLayoutAlign="center center">
-      <img mat-card-image [src]="selectedImage">
+      <img mat-card-image [style.height]="height" [src]="selectedImage">
     </mat-card>
     <div fxLayout="row wamp" fxLayoutAlign="center">
       <div *ngFor="let i of images" fxLayout="row" (click)="selectedImage = i;" class="selecao-image">

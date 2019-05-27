@@ -9,8 +9,8 @@ import { CdkTreeModule } from '@angular/cdk/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { Injectable, NgModule, Component, Input, Output, EventEmitter, Inject, HostBinding, defineInjectable } from '@angular/core';
 import { MatAutocompleteModule, MatBadgeModule, MatBottomSheetModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatTreeModule, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
+import { Injectable, NgModule, Component, Input, Output, EventEmitter, Inject, HostBinding, defineInjectable } from '@angular/core';
 
 /**
  * @fileoverview added by tsickle
@@ -850,6 +850,12 @@ class ImageGalleryComponent {
      * @return {?}
      */
     ngOnInit() {
+        if (this.proportion) {
+            this.height = "auto";
+        }
+        else {
+            this.height = "100%";
+        }
         if (this.images.length) {
             this.selectedImage = this.images[0];
         }
@@ -879,7 +885,7 @@ class ImageGalleryComponent {
 ImageGalleryComponent.decorators = [
     { type: Component, args: [{
                 selector: 'gua-image-gallery',
-                template: "<ng-container *ngIf=\"images && images.length\">\r\n  <div fxFlex fxFlexFill>\r\n    <mat-card class=\"imagem-principal\" (click)=\"openZoom()\" fxLayoutAlign=\"center center\">\r\n      <img mat-card-image [src]=\"selectedImage\">\r\n    </mat-card>\r\n    <div fxLayout=\"row wamp\" fxLayoutAlign=\"center\">\r\n      <div *ngFor=\"let i of images\" fxLayout=\"row\" (click)=\"selectedImage = i;\" class=\"selecao-image\">\r\n        <mat-card fxLayoutAlign=\"center center\">\r\n          <img mat-card-image [src]=\"i\">\r\n        </mat-card>\r\n      </div>\r\n      <div *ngIf=\"onAddImage?.observers?.length\" fxLayout=\"row\" class=\"selecao-image\">\r\n        <mat-card class=\"add-btn\" fxLayoutAlign=\"center center\" (click)=\"onClick($event)\">\r\n          <mat-icon class=\"add-icon\" fxFlex>add_circle</mat-icon>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ng-container>\r\n",
+                template: "<ng-container *ngIf=\"images && images.length\">\r\n  <div fxFlex fxFlexFill>\r\n    <mat-card class=\"imagem-principal\" (click)=\"openZoom()\" fxLayoutAlign=\"center center\">\r\n      <img mat-card-image [style.height]=\"height\" [src]=\"selectedImage\">\r\n    </mat-card>\r\n    <div fxLayout=\"row wamp\" fxLayoutAlign=\"center\">\r\n      <div *ngFor=\"let i of images\" fxLayout=\"row\" (click)=\"selectedImage = i;\" class=\"selecao-image\">\r\n        <mat-card fxLayoutAlign=\"center center\">\r\n          <img mat-card-image [src]=\"i\">\r\n        </mat-card>\r\n      </div>\r\n      <div *ngIf=\"onAddImage?.observers?.length\" fxLayout=\"row\" class=\"selecao-image\">\r\n        <mat-card class=\"add-btn\" fxLayoutAlign=\"center center\" (click)=\"onClick($event)\">\r\n          <mat-icon class=\"add-icon\" fxFlex>add_circle</mat-icon>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ng-container>\r\n",
                 styles: [":host .imagem-principal{height:80%}:host .mat-card{cursor:pointer;border-radius:0;padding:0;margin:0;box-shadow:none!important;background-color:transparent}:host .mat-card>img{border-radius:10px;height:100%;width:100%;margin-top:0}:host .selecao-image{height:100px;width:100px;padding:5px}:host .add-btn{width:100%;border-radius:10px;background-color:rgba(0,0,0,.3)}:host .add-icon{height:auto;text-align:center;font-size:40px}"]
             }] }
 ];
@@ -891,7 +897,8 @@ ImageGalleryComponent.propDecorators = {
     images: [{ type: Input }],
     closeButtonColor: [{ type: Input }],
     panelClass: [{ type: Input }],
-    onAddImage: [{ type: Output }]
+    onAddImage: [{ type: Output }],
+    proportion: [{ type: Input }]
 };
 
 /**
@@ -918,6 +925,126 @@ ImageGalleryModule.decorators = [
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+class LoadingOverlayComponent {
+    constructor() { }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        if (this.image) {
+            this.image = "assets/image-loading.gif";
+        }
+    }
+}
+LoadingOverlayComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'gua-loading-overlay',
+                template: "<div class=\"loading-overlay\" style=\"display: flex; align-items: center; justify-content: center;\" [class.show]=\"loading\">\r\n  <img class=\"image-loading\" [src]=\"image\">\r\n</div>",
+                styles: [".loading-overlay{background-color:rgba(255,255,255,.7);position:fixed;top:0;left:0;width:100%;height:100%;z-index:10;transition:.25s ease-in-out;opacity:0;visibility:hidden}.loading-overlay.show{opacity:1;visibility:visible}.image-loading{height:128px}"]
+            }] }
+];
+/** @nocollapse */
+LoadingOverlayComponent.ctorParameters = () => [];
+LoadingOverlayComponent.propDecorators = {
+    loading: [{ type: Input, args: ['loading',] }],
+    image: [{ type: Input }]
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class LoadingOverlayService {
+    constructor() {
+        this.loading = false;
+        this.quantidade = 0;
+    }
+    /**
+     * @return {?}
+     */
+    startLoading() {
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            this.setLoading(true);
+        }), 1);
+    }
+    /**
+     * @return {?}
+     */
+    endLoading() {
+        setTimeout((/**
+         * @return {?}
+         */
+        () => {
+            this.setLoading(false);
+        }), 1);
+    }
+    /**
+     * @private
+     * @param {?} load
+     * @return {?}
+     */
+    setLoading(load) {
+        if (load) {
+            this.quantidade++;
+            this.loading = true;
+        }
+        else {
+            this.quantidade--;
+            if (this.quantidade === 0) {
+                this.loading = false;
+            }
+        }
+    }
+    /**
+     * @return {?}
+     */
+    getLoading() {
+        return this.loading;
+    }
+}
+LoadingOverlayService.decorators = [
+    { type: Injectable }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class LoadingOverlayModule {
+    /**
+     * @return {?}
+     */
+    static forRoot() {
+        return {
+            ngModule: LoadingOverlayModule,
+            providers: [LoadingOverlayService, LoadingOverlayComponent]
+        };
+    }
+}
+LoadingOverlayModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [
+                    LoadingOverlayComponent
+                ],
+                imports: [
+                    SharedModule
+                ],
+                exports: [
+                    LoadingOverlayComponent
+                ],
+                providers: [
+                    LoadingOverlayService
+                ]
+            },] }
+];
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 class GuaThemeModule {
 }
 GuaThemeModule.decorators = [
@@ -934,7 +1061,8 @@ GuaThemeModule.decorators = [
                     ToolbarModule,
                     LabelModule,
                     CardListModule,
-                    ImageGalleryModule
+                    ImageGalleryModule,
+                    LoadingOverlayModule
                 ]
             },] }
 ];
@@ -949,6 +1077,6 @@ GuaThemeModule.decorators = [
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { GuaThemeService, GuaThemeComponent, GuaThemeModule, BreadcrumbComponent as ɵb, BreadcrumbModule as ɵa, ButtonComponent as ɵn, ButtonModule as ɵm, CardListComponent as ɵv, CardListModule as ɵu, ImageGalleryZoomComponent as ɵy, ImageGalleryComponent as ɵx, ImageGalleryModule as ɵw, InputSearchComponent as ɵf, InputSearchModule as ɵe, LabelComponent as ɵt, LabelModule as ɵs, MaterialModule as ɵd, NavBarItemComponent as ɵk, NavBarItemModule as ɵj, NavbarComponent as ɵl, NavbarModule as ɵi, PageTitleComponent as ɵp, PageTitleModule as ɵo, SharedModule as ɵc, SideMenuComponent as ɵh, SideMenuModule as ɵg, ToolbarComponent as ɵr, ToolbarModule as ɵq };
+export { GuaThemeService, GuaThemeComponent, GuaThemeModule, BreadcrumbComponent as ɵb, BreadcrumbModule as ɵa, ButtonComponent as ɵn, ButtonModule as ɵm, CardListComponent as ɵv, CardListModule as ɵu, ImageGalleryZoomComponent as ɵy, ImageGalleryComponent as ɵx, ImageGalleryModule as ɵw, InputSearchComponent as ɵf, InputSearchModule as ɵe, LabelComponent as ɵt, LabelModule as ɵs, LoadingOverlayComponent as ɵba, LoadingOverlayModule as ɵz, LoadingOverlayService as ɵbb, MaterialModule as ɵd, NavBarItemComponent as ɵk, NavBarItemModule as ɵj, NavbarComponent as ɵl, NavbarModule as ɵi, PageTitleComponent as ɵp, PageTitleModule as ɵo, SharedModule as ɵc, SideMenuComponent as ɵh, SideMenuModule as ɵg, ToolbarComponent as ɵr, ToolbarModule as ɵq };
 
 //# sourceMappingURL=gua-theme-lib.js.map

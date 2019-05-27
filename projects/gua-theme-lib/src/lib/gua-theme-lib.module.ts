@@ -10,6 +10,7 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 import { LabelModule } from './label/label.module';
 import { CardListModule } from './card-list/card-list.module';
 import { ImageGalleryModule } from './image-gallery/image-gallery.module';
+import { LoadingOverlayModule } from './loading-overlay/loading-overlay.module';
 
 @NgModule({
   declarations: [GuaThemeComponent],
@@ -24,7 +25,8 @@ import { ImageGalleryModule } from './image-gallery/image-gallery.module';
     ToolbarModule,
     LabelModule,
     CardListModule,
-    ImageGalleryModule
+    ImageGalleryModule,
+    LoadingOverlayModule
   ]
 })
 export class GuaThemeModule { }

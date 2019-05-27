@@ -13,12 +13,19 @@ export class ImageGalleryComponent implements OnInit {
   @Input() closeButtonColor: string;
   @Input() panelClass: string;
   @Output() onAddImage = new EventEmitter();
+  @Input() proportion: boolean;
+  height: string;
 
   selectedImage: string;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    if(this.proportion){
+      this.height = "auto";
+    }else{
+      this.height = "100%";
+    }
     if (this.images.length) {
       this.selectedImage = this.images[0];
     }
