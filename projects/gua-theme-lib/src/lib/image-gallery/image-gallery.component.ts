@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ImageGalleryZoomComponent } from './image-gallery-zoom/image-gallery-zoom.component';
 
@@ -7,7 +7,7 @@ import { ImageGalleryZoomComponent } from './image-gallery-zoom/image-gallery-zo
   templateUrl: './image-gallery.component.html',
   styleUrls: ['./image-gallery.component.scss']
 })
-export class ImageGalleryComponent implements OnInit {
+export class ImageGalleryComponent implements OnInit, OnChanges {
 
   @Input() images: string[];
   @Input() closeButtonColor: string;
@@ -20,10 +20,17 @@ export class ImageGalleryComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
+
+  ngOnChanges() {
+    if (this.images.length) {
+      this.selectedImage = this.images[0];
+    }
+  }
+
   ngOnInit() {
-    if(this.proportion){
+    if (this.proportion) {
       this.height = "auto";
-    }else{
+    } else {
       this.height = "100%";
     }
     if (this.images.length) {

@@ -1,6 +1,6 @@
-import { OnInit, EventEmitter } from '@angular/core';
+import { OnInit, EventEmitter, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material';
-export declare class ImageGalleryComponent implements OnInit {
+export declare class ImageGalleryComponent implements OnInit, OnChanges {
     dialog: MatDialog;
     images: string[];
     closeButtonColor: string;
@@ -10,6 +10,7 @@ export declare class ImageGalleryComponent implements OnInit {
     height: string;
     selectedImage: string;
     constructor(dialog: MatDialog);
+    ngOnChanges(): void;
     ngOnInit(): void;
     openZoom(): void;
     onClick($event: any): void;

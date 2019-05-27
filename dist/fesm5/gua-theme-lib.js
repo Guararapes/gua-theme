@@ -969,6 +969,17 @@ var ImageGalleryComponent = /** @class */ (function () {
     /**
      * @return {?}
      */
+    ImageGalleryComponent.prototype.ngOnChanges = /**
+     * @return {?}
+     */
+    function () {
+        if (this.images.length) {
+            this.selectedImage = this.images[0];
+        }
+    };
+    /**
+     * @return {?}
+     */
     ImageGalleryComponent.prototype.ngOnInit = /**
      * @return {?}
      */
