@@ -13,7 +13,7 @@ export class LoadingOverlayComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if(this.image){
+    if(!this.image){
       this.image = "assets/image-loading.gif"
     }
   }

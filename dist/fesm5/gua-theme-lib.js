@@ -1069,7 +1069,7 @@ var LoadingOverlayComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
-        if (this.image) {
+        if (!this.image) {
             this.image = "assets/image-loading.gif";
         }
     };
