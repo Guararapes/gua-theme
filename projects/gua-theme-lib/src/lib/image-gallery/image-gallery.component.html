@@ -3,9 +3,9 @@
     <mat-card class="imagem-principal" (click)="openZoom()" fxLayoutAlign="center center">
       <img mat-card-image [style.height]="height" [src]="selectedImage">
     </mat-card>
-    <div fxLayout="row wamp" fxLayoutAlign="center">
+    <div fxLayout="row wrap" fxLayoutAlign="center">
       <div *ngFor="let i of images" fxLayout="row" (click)="selectedImage = i;" class="selecao-image">
-        <mat-card fxLayoutAlign="center center">
+        <mat-card [style.height]="height" fxLayoutAlign="center center">
           <img mat-card-image [src]="i">
         </mat-card>
       </div>
