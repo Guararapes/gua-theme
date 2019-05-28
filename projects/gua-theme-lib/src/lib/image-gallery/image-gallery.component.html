@@ -1,5 +1,5 @@
-<ng-container *ngIf="images && images.length">
-  <div fxFlex fxFlexFill>
+<ng-container fxFlex *ngIf="images && images.length" style=" height: 100%;">
+  <div fxFlex style="height: 100%;">
     <mat-card class="imagem-principal" (click)="openZoom()" fxLayoutAlign="center center">
       <img mat-card-image [style.height]="height" [src]="selectedImage">
     </mat-card>
