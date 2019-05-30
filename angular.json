@@ -58,7 +58,7 @@
               "projects/gua-theme-documentation/src/assets"
             ],
             "styles": [
-              "projects/gua-theme-documentation/src/styles.css"
+              "projects/gua-theme-documentation/src/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true

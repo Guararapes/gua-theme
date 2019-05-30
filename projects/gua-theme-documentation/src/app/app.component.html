@@ -1,1 +1,14 @@
-<gua-loading-overlay loading="true"></gua-loading-overlay>
+<div fxFlex #scrollContainer style="position: relative;display: flex; flex: 1;">
+    <code guaHighlight [innerHTML]="flatButtonsHTML" fxFlex="50">
+
+    </code>
+    <div fxFlex="50">
+      <button mat-button>Button</button>
+      <button mat-button color="primary">Primary</button>
+      <button mat-button color="accent">Accent</button>
+      <button mat-button color="warn">Warn</button>
+      <button mat-button disabled="true">Disabled</button>
+    </div>
+    
+    
+</div>
