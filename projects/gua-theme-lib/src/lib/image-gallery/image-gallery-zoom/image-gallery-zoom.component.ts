@@ -10,7 +10,9 @@ export class ImageGalleryZoomComponent {
 
   constructor(public dialogRef: MatDialogRef<ImageGalleryZoomComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  closeDialog() {
+  closeDialog(closeDialog: boolean) {
+    if (closeDialog)
+      return;
     this.dialogRef.close();
   }
 }

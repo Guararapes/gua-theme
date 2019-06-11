@@ -1,3 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~simplebar/dist/simplebar.css";
+@charset "utf-8";
+
+* {
+  scrollbar-width: thin;
+}
+
+@import '~@angular/material/theming';
+$my-theme-primary: mat-palette($mat-grey);
+$my-theme-accent : mat-palette($mat-amber);
+$my-theme-warn   : mat-palette($mat-red);
+$my-theme: mat-light-theme(
+    $my-theme-primary,
+    $my-theme-accent,
+    $my-theme-warn
+);
+
+@include mat-core();
+@include angular-material-theme($my-theme);
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+.body-content {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.flex {
+  display: flex;
+}
+.flex-item {
+  flex-grow: 0;
+}
+.flex > span.flex-item {
+  flex-grow: 1;
+}
+.flex-row {
+  flex-direction: row;
+}
+.font-size-24 {
+  font-size: 24px;
+}
+.font-size-16 {
+  font-size: 16px;
+}

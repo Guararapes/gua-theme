@@ -11,10 +11,12 @@ export class ImageGalleryComponent implements OnInit, OnChanges {
 
   @Input() images: string[];
   @Input() closeButtonColor: string;
+  @Input() closeButtonBackground: string;
   @Input() panelClass: string;
   @Output() onAddImage = new EventEmitter();
   @Input() proportion: boolean;
-  height: string;
+  @Input() height: string;
+  @Input() disableClose: boolean;
 
   selectedImage: string;
 
@@ -40,12 +42,12 @@ export class ImageGalleryComponent implements OnInit, OnChanges {
 
   openZoom(): void {
     this.dialog.open(ImageGalleryZoomComponent, {
-      disableClose: true,
+      disableClose: false,
       height: '100%',
       width: '100%',
       maxWidth: '100vw',
       maxHeight: '100vh',
-      data: { url: this.selectedImage, color: this.closeButtonColor },
+      data: { url: this.selectedImage, color: this.closeButtonColor, background: this.closeButtonBackground, disableClose: this.disableClose },
       panelClass: this.panelClass,
     });
   }

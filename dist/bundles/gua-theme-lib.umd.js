@@ -975,19 +975,23 @@
             this.data = data;
         }
         /**
+         * @param {?} closeDialog
          * @return {?}
          */
         ImageGalleryZoomComponent.prototype.closeDialog = /**
+         * @param {?} closeDialog
          * @return {?}
          */
-            function () {
+            function (closeDialog) {
+                if (closeDialog)
+                    return;
                 this.dialogRef.close();
             };
         ImageGalleryZoomComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'gua-image-gallery-zoom',
-                        template: "<div [style.color]=\"data?.color\" class=\"close-button\">\r\n  <button mat-icon-button (click)=\"closeDialog()\">\r\n    <i class=\"material-icons\" (click)=\"closeDialog()\">close</i>\r\n  </button>\r\n</div>\r\n<div class=\"image\">\r\n  <img [src]=\"data.url\">\r\n</div>\r\n",
-                        styles: [":host{background-color:#000}:host .image{display:flex;align-items:center;justify-content:center;align-items:center;height:100%}:host img{align-content:center;height:inherit}:host .close-button{color:#000;position:absolute;right:0;top:0}"]
+                        template: "<div [style.color]=\"data?.color\" class=\"close-button\">\r\n  <button mat-icon-button (click)=\"closeDialog(false)\" [style.background-color]=\"data?.background\">\r\n    <i class=\"material-icons\">close</i>\r\n  </button>\r\n</div>\r\n<div class=\"image\" (click)=\"closeDialog(data?.disableClose)\">\r\n  <img cdkFocusInitial [src]=\"data.url\">\r\n</div>\r\n",
+                        styles: [":host{background-color:#000}:host .image{display:flex;align-items:center;justify-content:center;align-items:center;height:100%}:host img{align-content:center;height:inherit}:host .close-button{color:#000;position:absolute;right:10px;top:10px}:host .mat-icon-button{height:auto;width:auto}:host .material-icons{font-size:50px}"]
                     }] }
         ];
         /** @nocollapse */
@@ -1045,12 +1049,12 @@
          */
             function () {
                 this.dialog.open(ImageGalleryZoomComponent, {
-                    disableClose: true,
+                    disableClose: false,
                     height: '100%',
                     width: '100%',
                     maxWidth: '100vw',
                     maxHeight: '100vh',
-                    data: { url: this.selectedImage, color: this.closeButtonColor },
+                    data: { url: this.selectedImage, color: this.closeButtonColor, background: this.closeButtonBackground, disableClose: this.disableClose },
                     panelClass: this.panelClass,
                 });
             };
@@ -1068,8 +1072,8 @@
         ImageGalleryComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'gua-image-gallery',
-                        template: "<ng-container fxFlex *ngIf=\"images && images.length\" style=\" height: 100%;\">\r\n  <div fxFlex style=\"height: 100%;\">\r\n    <mat-card class=\"imagem-principal\" (click)=\"openZoom()\" fxLayoutAlign=\"center center\">\r\n      <img mat-card-image [style.height]=\"height\" [src]=\"selectedImage\">\r\n    </mat-card>\r\n    <div fxLayout=\"row wrap\" fxLayoutAlign=\"center\">\r\n      <div *ngFor=\"let i of images\" fxLayout=\"row\" (click)=\"selectedImage = i;\" class=\"selecao-image\">\r\n        <mat-card [style.height]=\"height\" fxLayoutAlign=\"center center\">\r\n          <img mat-card-image [src]=\"i\">\r\n        </mat-card>\r\n      </div>\r\n      <div *ngIf=\"onAddImage?.observers?.length\" fxLayout=\"row\" class=\"selecao-image\">\r\n        <mat-card class=\"add-btn\" fxLayoutAlign=\"center center\" (click)=\"onClick($event)\">\r\n          <mat-icon class=\"add-icon\" fxFlex>add_circle</mat-icon>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ng-container>\r\n",
-                        styles: [":host .imagem-principal{height:80%}:host .mat-card{cursor:pointer;border-radius:0;padding:0;margin:0;box-shadow:none!important;background-color:transparent}:host .mat-card>img{border-radius:10px;height:100%;width:100%;margin-top:0}:host .selecao-image{height:100px;width:100px;padding:5px}:host .add-btn{width:100%;border-radius:10px;background-color:rgba(0,0,0,.3)}:host .add-icon{height:auto;text-align:center;font-size:40px}"]
+                        template: "<ng-container *ngIf=\"images && images.length\" style=\" height: 100%;\">\r\n  <div fxFlex style=\"height: 100%;\">\r\n    <mat-card class=\"imagem-principal\" (click)=\"openZoom()\" fxLayoutAlign=\"center center\">\r\n      <img mat-card-image [style.height]=\"height\" [src]=\"selectedImage\">\r\n    </mat-card>\r\n    <div fxLayout=\"row wrap\" fxLayoutAlign=\"center\">\r\n      <div *ngFor=\"let i of images\" fxLayout=\"row\" (click)=\"selectedImage = i;\" class=\"selecao-image\">\r\n        <mat-card [style.height]=\"height\" fxLayoutAlign=\"center center\">\r\n          <img mat-card-image [src]=\"i\">\r\n        </mat-card>\r\n      </div>\r\n      <div *ngIf=\"onAddImage?.observers?.length\" fxLayout=\"row\" class=\"selecao-image\">\r\n        <mat-card class=\"add-btn\" fxLayoutAlign=\"center center\" (click)=\"onClick($event)\">\r\n          <mat-icon class=\"add-icon\" fxFlex>add_circle</mat-icon>\r\n        </mat-card>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ng-container>\r\n",
+                        styles: [":host .imagem-principal{height:80%}:host .material-icons{font-size:18px}:host .mat-card{cursor:pointer;border-radius:0;padding:0;margin:0;box-shadow:none!important;background-color:transparent}:host .mat-card>img{border-radius:10px;height:100%;width:100%;margin-top:0}:host .selecao-image{height:100px;width:100px;padding:5px}:host .add-btn{width:100%;border-radius:10px;background-color:rgba(0,0,0,.3)}:host .add-icon{height:auto;text-align:center;font-size:40px}"]
                     }] }
         ];
         /** @nocollapse */
@@ -1081,9 +1085,12 @@
         ImageGalleryComponent.propDecorators = {
             images: [{ type: i0.Input }],
             closeButtonColor: [{ type: i0.Input }],
+            closeButtonBackground: [{ type: i0.Input }],
             panelClass: [{ type: i0.Input }],
             onAddImage: [{ type: i0.Output }],
-            proportion: [{ type: i0.Input }]
+            proportion: [{ type: i0.Input }],
+            height: [{ type: i0.Input }],
+            disableClose: [{ type: i0.Input }]
         };
         return ImageGalleryComponent;
     }());

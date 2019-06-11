@@ -1,14 +1,7 @@
-<div fxFlex #scrollContainer style="position: relative;display: flex; flex: 1;">
-    <code guaHighlight [innerHTML]="flatButtonsHTML" fxFlex="50">
-
-    </code>
-    <div fxFlex="50">
-      <button mat-button>Button</button>
-      <button mat-button color="primary">Primary</button>
-      <button mat-button color="accent">Accent</button>
-      <button mat-button color="warn">Warn</button>
-      <button mat-button disabled="true">Disabled</button>
-    </div>
-    
-    
+<div fxFlex="50">
+  <gua-image-gallery closeButtonColor="#000"  closeButtonBackground="#000"proportion="true" panelClass="galeria-fundo-modal"
+    [images]="['http://serv_nt/ImagensSystextil/sisguara/Itens/N2/GM0671/S300/P194024/n2gM0671s300p194024.jpg', 'http://serv_nt/ImagensSystextil/sisguara/Itens/N2/GM0671/S300/P181140/n2gM0671s300p181140.jpg']">
+  </gua-image-gallery>
 </div>
+
+

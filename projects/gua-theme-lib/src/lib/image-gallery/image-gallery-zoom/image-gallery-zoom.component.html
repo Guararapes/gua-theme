@@ -1,8 +1,8 @@
 <div [style.color]="data?.color" class="close-button">
-  <button mat-icon-button (click)="closeDialog()">
-    <i class="material-icons" (click)="closeDialog()">close</i>
+  <button mat-icon-button (click)="closeDialog(false)" [style.background-color]="data?.background">
+    <i class="material-icons">close</i>
   </button>
 </div>
-<div class="image">
-  <img [src]="data.url">
+<div class="image" (click)="closeDialog(data?.disableClose)">
+  <img cdkFocusInitial [src]="data.url">
 </div>

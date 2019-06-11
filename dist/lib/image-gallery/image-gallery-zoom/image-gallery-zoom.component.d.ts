@@ -3,5 +3,5 @@ export declare class ImageGalleryZoomComponent {
     dialogRef: MatDialogRef<ImageGalleryZoomComponent>;
     data: any;
     constructor(dialogRef: MatDialogRef<ImageGalleryZoomComponent>, data: any);
-    closeDialog(): void;
+    closeDialog(closeDialog: boolean): void;
 }

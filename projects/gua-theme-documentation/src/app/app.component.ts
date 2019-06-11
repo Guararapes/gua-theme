@@ -30,18 +30,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
-    this.zone.runOutsideAngular(() => {
 
-      setTimeout(() => {
-      console.log('asdasd')
-      //this.simpleBar is the ElementRef of simplebar element retrived via @ViewChild
-              const scrollBar = new SimpleBar(this.scrollContainer.nativeElement);
-              //assuming you want to add a listener
-              scrollBar.getScrollElement().addEventListener('scroll', (event) => {
-                     console.log('asdasd')
-              });
-       });
-  });
     
   }
 
