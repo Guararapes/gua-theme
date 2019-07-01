@@ -1,5 +1,5 @@
 {
-  "name": "gua-theme-lib",
+  "name": "gua-theme",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
@@ -23,15 +23,15 @@
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
-  "main": "bundles/gua-theme-lib.umd.js",
-  "module": "fesm5/gua-theme-lib.js",
-  "es2015": "fesm2015/gua-theme-lib.js",
-  "esm5": "esm5/gua-theme-lib.js",
-  "esm2015": "esm2015/gua-theme-lib.js",
-  "fesm5": "fesm5/gua-theme-lib.js",
-  "fesm2015": "fesm2015/gua-theme-lib.js",
-  "typings": "gua-theme-lib.d.ts",
-  "metadata": "gua-theme-lib.metadata.json",
+  "main": "bundles/gua-theme.umd.js",
+  "module": "fesm5/gua-theme.js",
+  "es2015": "fesm2015/gua-theme.js",
+  "esm5": "esm5/gua-theme.js",
+  "esm2015": "esm2015/gua-theme.js",
+  "fesm5": "fesm5/gua-theme.js",
+  "fesm2015": "fesm2015/gua-theme.js",
+  "typings": "gua-theme.d.ts",
+  "metadata": "gua-theme.metadata.json",
   "sideEffects": false,
   "dependencies": {
     "tslib": "^1.9.0"

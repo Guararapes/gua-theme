@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "gua-theme-lib": [
-        "dist/gua-theme-lib"
+      "gua-theme": [
+        "dist/gua-theme"
       ],
-      "gua-theme-lib/*": [
-        "dist/gua-theme-lib/*"
+      "gua-theme/*": [
+        "dist/gua-theme/*"
       ]
     }
   }
