@@ -1,9 +1,0 @@
-<div *ngIf="list && list.length" id="card-list" fxFlex fxLayout="column" [style.background-color]="backgroundColor">
-  <div *ngIf="title">
-     {{title}}
-  </div>
-  <div style="padding: 10px" fxLayout="row wrap">
-    <mat-card class="lista" *ngFor="let html of list" [innerHTML]="html" [ngStyle.lt-md]="{'margin-bottom': '20px'}" [style.width]="width" [style.width]="height">  
-    </mat-card>
-  </div>
-</div>
