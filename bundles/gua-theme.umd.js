@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('rxjs/operators'), require('@angular/platform-browser/animations'), require('@angular/common'), require('@angular/router'), require('@angular/cdk/drag-drop'), require('@angular/cdk/scrolling'), require('@angular/cdk/table'), require('@angular/cdk/tree'), require('@angular/flex-layout'), require('ng-material-multilevel-menu'), require('@angular/forms'), require('@angular/material'), require('@angular/core')) :
     typeof define === 'function' && define.amd ? define('gua-theme', ['exports', 'rxjs/operators', '@angular/platform-browser/animations', '@angular/common', '@angular/router', '@angular/cdk/drag-drop', '@angular/cdk/scrolling', '@angular/cdk/table', '@angular/cdk/tree', '@angular/flex-layout', 'ng-material-multilevel-menu', '@angular/forms', '@angular/material', '@angular/core'], factory) :
-    (factory((global['gua-theme'] = {}),global.rxjs.operators,global.ng.platformBrowser.animations,global.ng.common,global.ng.router,global.ng.cdk['drag-drop'],global.ng.cdk.scrolling,global.ng.cdk.table,global.ng.cdk.tree,global.ng['flex-layout'],global.ngMaterialMultilevelMenu,global.ng.forms,global.ng.material,global.ng.core));
+    (factory((global['gua-theme'] = {}),global.rxjs.operators,global.ng.platformBrowser.animations,global.ng.common,global.ng.router,global.ng.cdk['drag-drop'],global.ng.cdk.scrolling,global.ng.cdk.table,global.ng.cdk.tree,global.ng['flex-layout'],global['ng-material-multilevel-menu'],global.ng.forms,global.ng.material,global.ng.core));
 }(this, (function (exports,operators,animations,common,router,dragDrop,scrolling,table,tree,flexLayout,ngMaterialMultilevelMenu,forms,material,i0) { 'use strict';
 
     /**
